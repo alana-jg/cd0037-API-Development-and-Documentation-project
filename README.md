@@ -73,7 +73,8 @@ The API will return four error types when requests fail:
 
 - Returns a list of categories
 - Sample `curl http://127.0.0.1:5000/categories`
-`{ "categories" : {
+```bash
+{ "categories" : {
           "1": "Science",
           "2": "Art",
           "3": "Geography",
@@ -82,4 +83,5 @@ The API will return four error types when requests fail:
           "6": "Sports"
         },
         "success" : true
-   }`
+}`
+```
