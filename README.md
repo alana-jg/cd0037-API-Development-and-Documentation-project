@@ -273,7 +273,7 @@ Will either search for questions or create a new question
     }
   ], 
   "success": true, 
-  "total_questions": 5
+  "total_questions": 4
 }
 ```
 
@@ -297,4 +297,4 @@ Will either search for questions or create a new question
 ```
 
 ## Authors
-Alana Graham authored the API `__init__.py`, test suite `test_flaskr.py` and README file. All other files were created by Udacity and provided as part of the Full Stack Wed Developer Nanodegree.
+Alana Graham authored the API `__init__.py`, test suite `test_flaskr.py` and README file. All other files were created by Udacity and provided as part of the Full Stack Web Developer Nanodegree.
