@@ -186,7 +186,7 @@ The API will return four error types when requests fail:
 
 - General
   - Deletes a question by given ID if it exists
--  Sample `curl -X DELETE ttp://127.0.0.1:5000/questions/1`
+-  Sample `curl -X DELETE http://127.0.0.1:5000/questions/1`
 
 ```bash
 {
