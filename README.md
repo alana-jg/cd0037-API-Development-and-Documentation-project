@@ -276,3 +276,25 @@ Will either search for questions or create a new question
   "total_questions": 5
 }
 ```
+
+### POST /quizzes
+- General
+  - Gets questions to play the quiz, taking parameters of category, if selected, and previous questions to prevent duplicates
+  - Questions are selected randomly from questions not previously in the quiz
+- Sample `curl -X POST http://127.0.0.1:5000/quizzes -H "Content-Type: application/json" -d '{"previous_questions": [27], "quiz_category": {"type": "Science", "id": "1"}}'`
+```bash
+{
+  "category": "1", 
+  "question": {
+    "answer": "Marie Curie", 
+    "category": 1, 
+    "difficulty": 2, 
+    "id": 29, 
+    "question": "Who was the first woman to win a Nobel Prize?"
+  }, 
+  "success": true
+}
+```
+
+## Authors
+Alana Graham authored the API `__init__.py`, test suite `test_flaskr.py` and README file. All other files were created by Udacity and provided as part of the Full Stack Wed Developer Nanodegree.
