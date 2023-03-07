@@ -75,7 +75,8 @@ The API will return four error types when requests fail:
   - Returns a list of categories
 - Sample `curl http://127.0.0.1:5000/categories`
 ```bash
-{ "categories" : {
+{ 
+  "categories": {
           "1": "Science",
           "2": "Art",
           "3": "Geography",
@@ -83,8 +84,8 @@ The API will return four error types when requests fail:
           "5": "Entertainment",
           "6": "Sports"
         },
-        "success" : true
-}`
+        "success": true
+}
 ```
 
 #### GET /questions
@@ -178,4 +179,100 @@ The API will return four error types when requests fail:
   ], 
   "success": true, 
   "total_questions": 21
-}```
+}
+```
+
+#### DELETE /questions
+
+- General
+  - Deletes a question by given ID if it exists
+-  Sample `curl -X DELETE ttp://127.0.0.1:5000/questions/1`
+
+```bash
+{
+  "deleted": 1,
+  "success": true
+}
+```
+
+### POST /questions
+Will either search for questions or create a new question
+
+1. If search term is included:
+- General
+  - Searches for questions with at least partial match to search query
+  - Results are paginated in groups of 10
+- Sample `curl -X POST http://127.0.0.1:5000/questions -H "Content-Type: application/json" -d '{"searchTerm": "Tom"}'`
+```bash
+{
+  "questions": [
+    {
+      "answer": "Apollo 13", 
+      "category": 5, 
+      "difficulty": 4, 
+      "id": 2, 
+      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in 1996?"
+    }
+  ], 
+  "search_term": "Tom", 
+  "success": true, 
+  "total_questions": 1
+}
+```
+
+2. If search term is not included:
+- General
+  - Creates a new question if 'question', 'answer', 'difficulty' and 'category' are valid fields passed in to the JSON request
+- Sample `curl -X POST http://127.0.0.1:5000/questions -H "Content-Type: application/json" -d '{"question":"Who was the first Disney princess?", "answer":"Snow White", "difficulty":"2", "category":"4"}'`
+```bash
+{
+  "answer": "Snow White", 
+  "category": "4", 
+  "difficulty": "2", 
+  "question": "Who was the first Disney princess?", 
+  "success": true
+}
+```
+
+### GET /categories/{category_id}/questions
+- General
+  - Returns all questions in a selected category
+  - Results are paginated in groups of 10
+- Sample `curl http://127.0.0.1:5000/categories/1/questions`
+```bash
+{
+  "current_category": "Science", 
+  "questions": [
+    {
+      "answer": "The Liver", 
+      "category": 1, 
+      "difficulty": 4, 
+      "id": 20, 
+      "question": "What is the heaviest organ in the human body?"
+    }, 
+    {
+      "answer": "Alexander Fleming", 
+      "category": 1, 
+      "difficulty": 3, 
+      "id": 21, 
+      "question": "Who discovered penicillin?"
+    }, 
+    {
+      "answer": "Dogs", 
+      "category": 1, 
+      "difficulty": 1, 
+      "id": 24, 
+      "question": "What's the best animal?"
+    }, 
+    {
+      "answer": "Marie Curie", 
+      "category": 1, 
+      "difficulty": 2, 
+      "id": 29, 
+      "question": "Who was the first woman to win a Nobel Prize?"
+    }
+  ], 
+  "success": true, 
+  "total_questions": 5
+}
+```
